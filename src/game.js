@@ -66,7 +66,6 @@ define([
   }
 
   for(i = 0; i < 12; i++){
-    
     var wd = new Disc({
       id: 'dw' + i,
       number: i,
@@ -80,7 +79,7 @@ define([
 
   //start it up
   game.mode = modes.WHITE_START_PLACE;
-  
+
   game.selectedDisc = game.discs[23];
   game.box.setPosition(game.selectedDisc.id, board.goalPt.x, board.goalPt.y + board.outerRing);
   game.selectedDisc.onSurface = true;
