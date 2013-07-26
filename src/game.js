@@ -52,37 +52,34 @@ define([
 
   var i;
 
-  for(i = 0; i < 12; i++){
+  for(i = 0; i < 24; i++){
+    var white = (i % 2 === 0)? false : true;
+    var start = game.startPts.black;
+    if(white){
+      start = game.startPts.white;
+    }
     var bd = new Disc({
-      id: 'db' + i,
+      id: 'd' + i,
       number: i,
-      black: true,
-      x: game.startPts.black.x + i * 64,
-      y: game.startPts.black.y
+      white: white,
+      x: start.x + i * 32,
+      y: start.y
     });
 
     game.addBody(bd);
     game.discs.push(bd);
+    bd.startPosition = {x: bd.x, y: bd.y};
   }
 
-  for(i = 0; i < 12; i++){
-    var wd = new Disc({
-      id: 'dw' + i,
-      number: i,
-      black: false,
-      x: game.startPts.white.x + i * 64,
-      y: game.startPts.white.y
-    });
-    game.addBody(wd);
-    game.discs.push(wd);
-  }
 
   //start it up
-  game.mode = modes.WHITE_START_PLACE;
+  game.whiteTurn = true;
+  game.mode = modes.START_PLACE;
 
   game.selectedDisc = game.discs[23];
   game.box.setPosition(game.selectedDisc.id, board.goalPt.x, board.goalPt.y + board.outerRing);
   game.selectedDisc.onSurface = true;
+  game.selectedDisc.drawMode = modes.START_PLACE;
 
   //if you want to take a look at the game object in dev tools
   console.log(game);

@@ -4,5 +4,5 @@ define({
   unscaledOuterRing: 306,
   unscaledMiddleRing: 204,
   unscaledInnerRing: 102,
-  unscaledGoalRadius: 4
+  unscaledGoalRadius: 8
 });
