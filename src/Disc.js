@@ -12,7 +12,7 @@ define([
     id: 'ball',
     staticBody: false,
     radius: 16,
-    linearDamping : 0.9,
+    linearDamping : 2,
     angularDamping : 0.4,
     touching: {},
     white: true,
@@ -43,10 +43,6 @@ define([
         }
         else if(this.goal){
           ctx.strokeStyle = "#FFF";
-          ctx.fillStyle = "#0F0";
-          ctx.font = 'bold 20px Arial';
-          ctx.textAlign = 'center';
-          ctx.fillText('20', this.x * this.scale, this.y * this.scale + 8);
         }
         else{
           ctx.strokeStyle = "#0F0";
@@ -55,6 +51,13 @@ define([
         ctx.arc(this.x * this.scale, this.y * this.scale, this.radius * this.scale, 0, Math.PI * 2, true);
         ctx.closePath();
         ctx.stroke();
+      }
+
+      if(this.goal){
+        ctx.fillStyle = "#0F0";
+        ctx.font = 'bold 20px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('20', this.x * this.scale, this.y * this.scale + 8);
       }
 
       ctx.restore();
